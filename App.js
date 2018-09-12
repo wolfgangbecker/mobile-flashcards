@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
 import { addDeckActionCreator } from "./src/actions/decks";
+import DeckList from "./src/components/DeckList";
 
 store.dispatch(addDeckActionCreator({
   id: 'd_12345',
@@ -36,7 +37,8 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <Text>{JSON.stringify(store.getState())}</Text>
+          <Text>Decks</Text>
+          <DeckList />
         </View>
       </Provider>
     );
