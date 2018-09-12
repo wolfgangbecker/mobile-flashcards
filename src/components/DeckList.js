@@ -1,20 +1,41 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { connect } from 'react-redux';
+
+import Deck from './Deck';
 
 export class DeckList extends React.Component {
   render() {
     const { decks } = this.props;
 
     return (
-      <View>
-        {decks.map((deck, index) => {
-          <Text id={index}>{deck.title}</Text>
-        })}
+      <View style={styles.container}>
+        <Text>Decks</Text>
+        {decks.length === 0
+          ? <View style={styles.noDecksContainer}><Text style={styles.noDecksText}>No decks available</Text></View>
+          : <FlatList
+            data={decks}
+            keyExtractor={(deck) => deck.id}
+            renderItem={({ item }) => <Deck id={item.id} />} />
+        }
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  noDecksContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: "center"
+  },
+  noDecksText: {
+    fontSize: 20
+  }
+});
 
 function mapStateToProps({ decks }) {
   return {
