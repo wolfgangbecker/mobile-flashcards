@@ -1,11 +1,14 @@
 import React from "react";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import { Provider } from 'react-redux';
 import { createMaterialTopTabNavigator } from 'react-navigation';
+import { Constants } from 'expo';
 
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
 import { addDeckActionCreator } from "./src/actions/decks";
 import DeckList from "./src/components/DeckList";
+import { green } from "./src/utils/colors";
 
 store.dispatch(addDeckActionCreator({
   id: 'd_12345',
@@ -32,16 +35,47 @@ store.dispatch(addCardActionCreator({
   'd_56789'
 ));
 
+const NewDeck = () => <Text>New Deck</Text>;
+
 const NavBar = createMaterialTopTabNavigator({
-  Decks: DeckList
+  Decks: {
+    screen: DeckList,
+    navigationOptions: {
+      tabBarLabel: "Decks"
+    }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: "New Deck"
+    }
+  }
 });
+
+function FlashcardsStatusBar({ backgroundColor, ...props }) {
+  return (
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  );
+}
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <NavBar />
+        <View style={styles.container}>
+          <FlashcardsStatusBar backgroundColor={green} barStyle='dark-content' />
+          <NavBar />
+        </View>
       </Provider>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  }
+});
