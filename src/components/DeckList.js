@@ -10,7 +10,6 @@ export class DeckList extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>Decks</Text>
         {decks.length === 0
           ? <View style={styles.noDecksContainer}><Text style={styles.noDecksText}>No decks available</Text></View>
           : <FlatList

@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { Provider } from 'react-redux';
+import { createMaterialTopTabNavigator } from 'react-navigation';
 
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
@@ -32,21 +32,16 @@ store.dispatch(addCardActionCreator({
   'd_56789'
 ));
 
+const NavBar = createMaterialTopTabNavigator({
+  Decks: DeckList
+});
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <DeckList />
-        </View>
+        <NavBar />
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff"
-  }
-});
