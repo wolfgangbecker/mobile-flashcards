@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, StatusBar } from "react-native";
 import { Provider } from 'react-redux';
-import { createMaterialTopTabNavigator } from 'react-navigation';
+import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 import { Constants } from 'expo';
 
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
 import { addDeckActionCreator } from "./src/actions/decks";
 import DeckList from "./src/components/DeckList";
+import DeckDetail from "./src/components/DeckDetail";
 import { green } from "./src/utils/colors";
 
 store.dispatch(addDeckActionCreator({
@@ -52,6 +53,22 @@ const NavBar = createMaterialTopTabNavigator({
   }
 });
 
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: NavBar,
+    navigationOptions: { header: null }
+  },
+  DeckDetail: {
+    screen: DeckDetail,
+    navigationOptions: {
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#ccc'
+      }
+    }
+  }
+});
+
 function FlashcardsStatusBar({ backgroundColor, ...props }) {
   return (
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
@@ -66,7 +83,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={styles.container}>
           <FlashcardsStatusBar backgroundColor={green} barStyle='dark-content' />
-          <NavBar />
+          <MainNavigator />
         </View>
       </Provider>
     );

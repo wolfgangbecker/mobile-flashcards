@@ -15,7 +15,7 @@ export class DeckList extends React.Component {
           : <FlatList
             data={decks}
             keyExtractor={(deck) => deck.id}
-            renderItem={({ item }) => <Deck id={item.id} />} />
+            renderItem={({ item }) => <Deck id={item.id} navigation={this.props.navigation} />} />
         }
       </View>
     );

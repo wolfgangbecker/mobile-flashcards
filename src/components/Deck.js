@@ -7,7 +7,7 @@ export class Deck extends React.Component {
     const { deck } = this.props;
 
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={() => this.props.navigation.navigate("DeckDetail", { id: deck.id, title: deck.title })}>
         <Text style={styles.title}>{deck.title}</Text>
         <Text style={styles.count}>{deck.cardIds.length} cards</Text>
       </TouchableOpacity>
