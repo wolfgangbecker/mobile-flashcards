@@ -12,6 +12,7 @@ import DeckList from "./src/components/DeckList";
 import DeckDetail from "./src/components/DeckDetail";
 import AddCard from "./src/components/AddCard";
 import NewDeck from "./src/components/NewDeck";
+import Quiz from "./src/components/Quiz";
 
 store.dispatch(addDeckActionCreator({
   id: 'd_12345',
@@ -74,6 +75,16 @@ const MainNavigator = createStackNavigator({
       headerTitle: 'Add Card',
       headerStyle: {
         backgroundColor: '#1f1'
+      }
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: '#fff',
+      headerTitle: 'Quiz',
+      headerStyle: {
+        backgroundColor: '#11f'
       }
     }
   }
