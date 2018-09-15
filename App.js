@@ -7,10 +7,11 @@ import { Constants } from 'expo';
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
 import { addDeckActionCreator } from "./src/actions/decks";
+import { green } from "./src/utils/colors";
 import DeckList from "./src/components/DeckList";
 import DeckDetail from "./src/components/DeckDetail";
-import { green } from "./src/utils/colors";
 import AddCard from "./src/components/AddCard";
+import NewDeck from "./src/components/NewDeck";
 
 store.dispatch(addDeckActionCreator({
   id: 'd_12345',
@@ -36,8 +37,6 @@ store.dispatch(addCardActionCreator({
 },
   'd_56789'
 ));
-
-const NewDeck = () => <Text>New Deck</Text>;
 
 const NavBar = createMaterialTopTabNavigator({
   Decks: {
