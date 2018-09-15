@@ -10,6 +10,7 @@ import { addDeckActionCreator } from "./src/actions/decks";
 import DeckList from "./src/components/DeckList";
 import DeckDetail from "./src/components/DeckDetail";
 import { green } from "./src/utils/colors";
+import AddCard from "./src/components/AddCard";
 
 store.dispatch(addDeckActionCreator({
   id: 'd_12345',
@@ -64,6 +65,16 @@ const MainNavigator = createStackNavigator({
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: '#ccc'
+      }
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      headerTintColor: '#fff',
+      headerTitle: 'Add Card',
+      headerStyle: {
+        backgroundColor: '#1f1'
       }
     }
   }

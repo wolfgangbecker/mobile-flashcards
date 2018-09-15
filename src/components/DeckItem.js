@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   count: {
-    fontSize: 20
+    fontSize: 20,
+    color: '#888'
   }
 });
 

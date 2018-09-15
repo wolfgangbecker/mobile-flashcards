@@ -19,7 +19,9 @@ export class DeckDetail extends React.Component {
           <Text style={styles.count}>{deck.cardIds.length} cards</Text>
         </View>
         <View style={styles.section}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.props.navigation.navigate("AddCard", { deckId: deck.id })}>
             <Text>Add Card</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, { backgroundColor: "#000" }]}>
@@ -54,7 +56,8 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   count: {
-    fontSize: 20
+    fontSize: 20,
+    color: '#888'
   },
   button: {
     width: 200,
