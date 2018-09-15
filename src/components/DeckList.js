@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import { connect } from 'react-redux';
 
-import Deck from './Deck';
+import DeckItem from './DeckItem';
 
 export class DeckList extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export class DeckList extends React.Component {
           : <FlatList
             data={decks}
             keyExtractor={(deck) => deck.id}
-            renderItem={({ item }) => <Deck id={item.id} navigation={this.props.navigation} />} />
+            renderItem={({ item }) => <DeckItem id={item.id} navigation={this.props.navigation} />} />
         }
       </View>
     );

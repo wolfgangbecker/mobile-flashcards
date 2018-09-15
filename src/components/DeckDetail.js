@@ -19,14 +19,14 @@ export class DeckDetail extends React.Component {
           <Text style={styles.count}>{deck.cardIds.length} cards</Text>
         </View>
         <View style={styles.section}>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
             <Text>Add Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>Star Quiz</Text>
+          <TouchableOpacity style={[styles.button, { backgroundColor: "#000" }]}>
+            <Text style={{ color: '#fff' }}>Start Quiz</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -48,13 +48,22 @@ const styles = StyleSheet.create({
   section: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   title: {
     fontSize: 30
   },
   count: {
     fontSize: 20
+  },
+  button: {
+    width: 200,
+    paddingVertical: 20,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#222',
+    alignItems: "center",
+    marginBottom: 10
   }
 });
 

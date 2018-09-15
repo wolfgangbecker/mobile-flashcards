@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
 
-export class Deck extends React.Component {
+export class DeckItem extends React.Component {
   render() {
     const { deck } = this.props;
 
@@ -43,4 +43,4 @@ function mapStateToProps({ decks }, { id }) {
   }
 }
 
-export default connect(mapStateToProps)(Deck);
+export default connect(mapStateToProps)(DeckItem);
