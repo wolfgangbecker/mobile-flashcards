@@ -7,7 +7,7 @@ import { Constants } from 'expo';
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
 import { addDeckActionCreator } from "./src/actions/decks";
-import { green } from "./src/utils/colors";
+import { green } from "./src/styles/colors";
 import DeckList from "./src/components/DeckList";
 import DeckDetail from "./src/components/DeckDetail";
 import AddCard from "./src/components/AddCard";
