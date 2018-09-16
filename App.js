@@ -15,31 +15,6 @@ import AddCard from "./src/components/AddCard";
 import NewDeck from "./src/components/NewDeck";
 import Quiz from "./src/components/Quiz";
 
-store.dispatch(addDeckActionCreator({
-  id: 'd_12345',
-  title: 'React'
-}));
-
-store.dispatch(addDeckActionCreator({
-  id: 'd_56789',
-  title: 'JavaScript'
-}));
-
-store.dispatch(addCardActionCreator({
-  id: 'c_12345',
-  question: 'What is React',
-  answer: 'A library for managing user interfaces'
-},
-  'd_12345'
-));
-store.dispatch(addCardActionCreator({
-  id: 'c_98345',
-  question: 'Where do you make Ajax requests in React?',
-  answer: 'The componentDidMount lifecycle event'
-},
-  'd_56789'
-));
-
 const NavBar = createMaterialTopTabNavigator({
   Decks: {
     screen: DeckList,
