@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
+
 import { Card } from "./Card";
+import { QuizResult } from "./QuizResult";
 
 export class Quiz extends React.Component {
   state = {
@@ -23,28 +25,26 @@ export class Quiz extends React.Component {
     });
   }
 
+  backToDeck = () => {
+    const { deck, navigation } = this.props;
+
+    navigation.navigate("DeckDetail", { id: deck.id, title: deck.title });
+  }
+
   render() {
     const { cards, deck } = this.props;
     const { index, score } = this.state;
 
+    // Show results
     if (index === cards.length) {
-      return (
-        <View>
-          <Text style={styles.counter}>Score: {Math.round(score / cards.length * 100)}%</Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={this.restartQuiz}>
-            <Text style={{ color: '#000' }}>Restart Quiz</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: "#000" }]}
-            onPress={() => this.props.navigation.navigate("DeckDetail", { id: deck.id, title: deck.title })}>
-            <Text style={{ color: '#fff' }}>Back to Deck</Text>
-          </TouchableOpacity>
-        </View>
-      );
+      return <QuizResult
+        score={score}
+        numberOfCards={cards.length}
+        restart={this.restartQuiz}
+        backToDeck={this.backToDeck} />;
     }
 
+    // Show next card
     return (
       <View style={styles.container}>
         <Text style={styles.counter}>{index + 1}/{cards.length}</Text>
@@ -85,12 +85,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  title: {
-    fontSize: 30
-  },
-  count: {
+  counter: {
     fontSize: 20,
-    color: '#888'
+    alignSelf: "flex-start"
   },
   button: {
     width: 200,

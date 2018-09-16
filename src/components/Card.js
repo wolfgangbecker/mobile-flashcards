@@ -24,14 +24,14 @@ export class Card extends React.Component {
     const { answerVisible } = this.state;
 
     return (
-      <View>
+      <View style={[styles.container]}>
         {answerVisible
-          ? <Text>{card.answer}</Text>
+          ? <Text style={styles.answer}>{card.answer}</Text>
           : (
-            <View>
-              <Text>{card.question}</Text>
+            <View style={styles.container}>
+              <Text style={styles.question}>{card.question}</Text>
               <TouchableOpacity onPress={this.showAnswer}>
-                <Text>Answer</Text>
+                <Text style={styles.answerButton}>Answer</Text>
               </TouchableOpacity>
             </View>
           )
@@ -40,3 +40,25 @@ export class Card extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "stretch"
+  },
+  question: {
+    fontSize: 30,
+    textAlign: 'center'
+  },
+  answer: {
+    fontSize: 20,
+    color: '#888',
+    textAlign: 'center'
+  },
+  answerButton: {
+    fontSize: 20,
+    color: '#f00'
+  },
+});
