@@ -1,16 +1,41 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableWithoutFeedback, Animated } from "react-native";
 import { connect } from 'react-redux';
 
 export class DeckItem extends React.Component {
+  state = {
+    opacity: new Animated.Value(1),
+    scale: new Animated.Value(1)
+  }
+
+  select = () => {
+    const { deck } = this.props;
+    const { opacity, scale } = this.state;
+
+    Animated.parallel([
+      Animated.timing(opacity, { toValue: 0, duration: 500 }),
+      Animated.timing(scale, { toValue: 2, duration: 500 })
+    ]).start(() => {
+      this.props.navigation.navigate("DeckDetail", { id: deck.id, title: deck.title });
+      setTimeout(() => {
+        // HACK: Reset the values to make the deck visible again
+        this.state.opacity.setValue(1);
+        this.state.scale.setValue(1);
+      }, 1000);
+    });
+  }
+
   render() {
     const { deck } = this.props;
+    const { opacity, scale } = this.state;
 
     return (
-      <TouchableOpacity style={styles.container} onPress={() => this.props.navigation.navigate("DeckDetail", { id: deck.id, title: deck.title })}>
-        <Text style={styles.title}>{deck.title}</Text>
-        <Text style={styles.count}>{deck.cardIds.length} cards</Text>
-      </TouchableOpacity>
+      <TouchableWithoutFeedback onPress={this.select}>
+        <Animated.View style={[styles.container, { opacity, transform: [{ scale }] }]}>
+          <Text style={styles.title}>{deck.title}</Text>
+          <Text style={styles.count}>{deck.cardIds.length} cards</Text>
+        </Animated.View>
+      </TouchableWithoutFeedback>
     );
   }
 }
