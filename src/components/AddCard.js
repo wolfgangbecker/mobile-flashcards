@@ -32,7 +32,7 @@ export class AddCard extends React.Component {
           onChangeText={(answer) => this.setState({ answer })}
         />
         <TouchableOpacity style={formStyles.submitButton} onPress={this.submit}>
-          <Text style={{ color: '#fff' }}>Submit</Text>
+          <Text style={{ color: '#fff' }}>Add Card</Text>
         </TouchableOpacity>
       </View>
     );

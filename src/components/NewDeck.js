@@ -13,9 +13,9 @@ export class NewDeck extends React.Component {
   submit = () => {
     const { addDeck, navigation } = this.props;
 
-    addDeck(this.state);
+    const { deck: { id, title } } = addDeck(this.state);
     this.setState({ title: '' });
-    navigation.navigate("Decks");
+    navigation.navigate("DeckDetail", { id, title });
   }
 
   render() {
@@ -32,7 +32,7 @@ export class NewDeck extends React.Component {
         <TouchableOpacity
           style={formStyles.submitButton}
           onPress={this.submit}>
-          <Text style={{ color: '#fff' }}>Submit</Text>
+          <Text style={{ color: '#fff' }}>Create Deck</Text>
         </TouchableOpacity>
       </View>
     );
