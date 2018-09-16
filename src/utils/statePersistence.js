@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 
-const STATE_KEY = "@MobileFlashcards:notifications";
+const STATE_KEY = "@MobileFlashcards:state";
 
 export const loadState = () => {
   try {

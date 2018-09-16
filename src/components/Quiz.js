@@ -32,7 +32,7 @@ export class Quiz extends React.Component {
   }
 
   render() {
-    const { cards, deck } = this.props;
+    const { cards } = this.props;
     const { index, score } = this.state;
 
     // Show results

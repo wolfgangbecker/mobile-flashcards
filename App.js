@@ -7,6 +7,7 @@ import { Constants } from 'expo';
 import store from './src/store';
 import { addCardActionCreator } from "./src/actions/cards";
 import { addDeckActionCreator } from "./src/actions/decks";
+import { setLocalNotification } from "./src/utils/notifications";
 import { green } from "./src/styles/colors";
 import DeckList from "./src/components/DeckList";
 import DeckDetail from "./src/components/DeckDetail";
@@ -99,6 +100,10 @@ function FlashcardsStatusBar({ backgroundColor, ...props }) {
 }
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     return (
       <Provider store={store}>

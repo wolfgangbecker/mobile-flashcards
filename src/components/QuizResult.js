@@ -1,25 +1,36 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { setLocalNotification, clearLocalNotification } from "../utils/notifications";
 
-export const QuizResult = ({ score, numberOfCards, restart, backToDeck }) => (
-  <View style={styles.container}>
-    <View style={styles.scoreContainer}>
-      <Text style={styles.score}>{Math.round(score / numberOfCards * 100)}%</Text>
-    </View>
-    <View style={styles.section}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={restart}>
-        <Text style={{ color: '#000' }}>Restart Quiz</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.button, { backgroundColor: "#000" }]}
-        onPress={backToDeck}>
-        <Text style={{ color: '#fff' }}>Back to Deck</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-);
+export class QuizResult extends React.Component {
+  componentDidMount() {
+    clearLocalNotification().then(setLocalNotification);
+  }
+
+  render() {
+    const { score, numberOfCards, restart, backToDeck } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.scoreContainer}>
+          <Text style={styles.score}>{Math.round(score / numberOfCards * 100)}%</Text>
+        </View>
+        <View style={styles.section}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={restart}>
+            <Text style={{ color: '#000' }}>Restart Quiz</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: "#000" }]}
+            onPress={backToDeck}>
+            <Text style={{ color: '#fff' }}>Back to Deck</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
