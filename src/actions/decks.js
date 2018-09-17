@@ -1,11 +1,11 @@
-// import { uuid } from 'react-native-uuid';
+import { generateId } from "../utils/helpers";
 
 export const ADD_DECK = "ADD_DECK";
 
 export const addDeckActionCreator = (deck) => ({
   type: ADD_DECK,
   deck: {
-    id: (Math.random() * 1000000).toString(),
+    id: generateId(),
     ...deck
   }
 });
