@@ -13,10 +13,12 @@ export class Card extends React.Component {
     });
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      answerVisible: false
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props.card.id !== prevProps.card.id) {
+      this.setState({
+        answerVisible: false
+      });
+    }
   }
 
   render() {
