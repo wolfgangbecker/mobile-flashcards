@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { addCardActionCreator } from "../actions/cards";
 import formStyles from "../styles/forms";
+import { white } from "../styles/colors";
 
 export class AddCard extends React.Component {
   state = {
@@ -32,7 +33,7 @@ export class AddCard extends React.Component {
           onChangeText={(answer) => this.setState({ answer })}
         />
         <TouchableOpacity style={formStyles.submitButton} onPress={this.submit}>
-          <Text style={{ color: '#fff' }}>Add Card</Text>
+          <Text style={{ color: white }}>Add Card</Text>
         </TouchableOpacity>
       </View>
     );

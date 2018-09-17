@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { Card } from "./Card";
 import { QuizResult } from "./QuizResult";
+import { white, lightGrey3, lightGrey2, darkGrey } from "../styles/colors";
 
 export class Quiz extends React.Component {
   state = {
@@ -53,12 +54,12 @@ export class Quiz extends React.Component {
           <TouchableOpacity
             style={[styles.button, { backgroundColor: "#008000" }]}
             onPress={() => this.submitAnswer(true)}>
-            <Text style={{ color: '#fff' }}>Correct</Text>
+            <Text style={{ color: white }}>Correct</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: "#D4271B" }]}
             onPress={() => this.submitAnswer(false)}>
-            <Text style={{ color: '#fff' }}>Incorrect</Text>
+            <Text style={{ color: white }}>Incorrect</Text>
           </TouchableOpacity>
         </View>
       </View >
@@ -73,8 +74,8 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 2.5,
     marginBottom: 2.5,
-    backgroundColor: "#eee",
-    borderColor: '#ddd',
+    backgroundColor: lightGrey3,
+    borderColor: lightGrey2,
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: '#222',
+    borderColor: darkGrey,
     alignItems: "center",
     marginBottom: 10
   }

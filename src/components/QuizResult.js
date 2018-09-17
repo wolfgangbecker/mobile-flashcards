@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { setLocalNotification, clearLocalNotification } from "../utils/notifications";
+import { black, white, grey, darkGrey } from "../styles/colors";
 
 export class QuizResult extends React.Component {
   componentDidMount() {
@@ -19,12 +20,12 @@ export class QuizResult extends React.Component {
           <TouchableOpacity
             style={styles.button}
             onPress={restart}>
-            <Text style={{ color: '#000' }}>Restart Quiz</Text>
+            <Text style={{ color: black }}>Restart Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: "#000" }]}
             onPress={backToDeck}>
-            <Text style={{ color: '#fff' }}>Back to Deck</Text>
+            <Text style={{ color: white }}>Back to Deck</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     borderWidth: 5,
-    borderColor: '#888'
+    borderColor: grey
   },
   score: {
     fontSize: 50
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: '#222',
+    borderColor: darkGrey,
     alignItems: "center",
     marginBottom: 10
   }

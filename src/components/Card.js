@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { connect } from 'react-redux';
+import { grey, red } from "../styles/colors";
 
 export class Card extends React.Component {
   state = {
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
   },
   answer: {
     fontSize: 20,
-    color: '#888',
+    color: grey,
     textAlign: 'center'
   },
   answerButton: {
     fontSize: 20,
-    color: '#f00'
+    color: red
   },
 });

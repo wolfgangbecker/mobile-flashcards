@@ -5,7 +5,7 @@ import { Constants } from 'expo';
 
 import store from './src/store';
 import { setLocalNotification } from "./src/utils/notifications";
-import { green } from "./src/styles/colors";
+import { green, white } from "./src/styles/colors";
 import MainNavigator from "./routes";
 
 function FlashcardsStatusBar({ backgroundColor, ...props }) {
@@ -36,6 +36,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: white
   }
 });

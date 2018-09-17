@@ -1,5 +1,6 @@
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
+import { white, lightGrey, green2, blue } from './src/styles/colors';
 import DeckList from "./src/components/DeckList";
 import DeckDetail from "./src/components/DeckDetail";
 import AddCard from "./src/components/AddCard";
@@ -29,29 +30,29 @@ const MainNavigator = createStackNavigator({
   DeckDetail: {
     screen: DeckDetail,
     navigationOptions: {
-      headerTintColor: '#fff',
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: '#ccc'
+        backgroundColor: lightGrey
       }
     }
   },
   AddCard: {
     screen: AddCard,
     navigationOptions: {
-      headerTintColor: '#fff',
+      headerTintColor: white,
       headerTitle: 'Add Card',
       headerStyle: {
-        backgroundColor: '#1f1'
+        backgroundColor: green2
       }
     }
   },
   Quiz: {
     screen: Quiz,
     navigationOptions: {
-      headerTintColor: '#fff',
+      headerTintColor: white,
       headerTitle: 'Quiz',
       headerStyle: {
-        backgroundColor: '#11f'
+        backgroundColor: blue
       }
     }
   }

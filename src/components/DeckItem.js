@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, Animated } from "react-native";
 import { connect } from 'react-redux';
+import { lightGrey2, lightGrey3, grey } from "../styles/colors";
 
 export class DeckItem extends React.Component {
   state = {
@@ -48,8 +49,8 @@ const styles = StyleSheet.create({
     marginTop: 2.5,
     marginBottom: 2.5,
     padding: 20,
-    backgroundColor: "#eee",
-    borderColor: '#ddd',
+    backgroundColor: lightGrey3,
+    borderColor: lightGrey2,
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   count: {
     fontSize: 20,
-    color: '#888',
+    color: grey,
     textAlign: "center"
   }
 });

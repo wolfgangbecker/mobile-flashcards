@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { addDeckActionCreator } from "../actions/decks";
 import formStyles from "../styles/forms";
+import { white } from "../styles/colors";
 
 export class NewDeck extends React.Component {
   state = {
@@ -32,7 +33,7 @@ export class NewDeck extends React.Component {
         <TouchableOpacity
           style={formStyles.submitButton}
           onPress={this.submit}>
-          <Text style={{ color: '#fff' }}>Create Deck</Text>
+          <Text style={{ color: white }}>Create Deck</Text>
         </TouchableOpacity>
       </View>
     );

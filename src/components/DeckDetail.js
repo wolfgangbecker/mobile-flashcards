@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
+import { white, lightGrey2, lightGrey3, grey, darkGrey, black } from "../styles/colors";
 
 export class DeckDetail extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -25,9 +26,9 @@ export class DeckDetail extends React.Component {
             <Text>Add Card</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: "#000" }]}
+            style={[styles.button, { backgroundColor: black }]}
             onPress={() => this.props.navigation.navigate("Quiz", { deckId: deck.id })}>
-            <Text style={{ color: '#fff' }}>Start Quiz</Text>
+            <Text style={{ color: white }}>Start Quiz</Text>
           </TouchableOpacity>
         </View>
       </View >
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 2.5,
     marginBottom: 2.5,
-    backgroundColor: "#eee",
-    borderColor: '#ddd',
+    backgroundColor: lightGrey3,
+    borderColor: lightGrey2,
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
@@ -60,14 +61,14 @@ const styles = StyleSheet.create({
   },
   count: {
     fontSize: 20,
-    color: '#888'
+    color: grey
   },
   button: {
     width: 200,
     paddingVertical: 20,
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: '#222',
+    borderColor: darkGrey,
     alignItems: "center",
     marginBottom: 10
   }
