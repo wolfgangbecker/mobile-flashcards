@@ -12,8 +12,13 @@ export class NewDeck extends React.Component {
   }
 
   submit = () => {
-    const { addDeck, navigation } = this.props;
+    const { title } = this.state;
 
+    if (title.trim() === '') {
+      return alert("Please provide a title");
+    }
+
+    const { addDeck, navigation } = this.props;
     const { deck: { id, title } } = addDeck(this.state);
     this.setState({ title: '' });
     navigation.navigate("DeckDetail", { id, title });

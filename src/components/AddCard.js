@@ -13,8 +13,13 @@ export class AddCard extends React.Component {
   }
 
   submit = () => {
-    const { addCard, navigation, deckId } = this.props;
+    const { question, answer } = this.state;
 
+    if (question.trim() === '' || answer.trim() === '') {
+      return alert("Please fill in the empty field(s)");
+    }
+
+    const { addCard, navigation, deckId } = this.props;
     addCard(this.state);
     navigation.navigate("DeckDetail", { id: deckId });
   }
