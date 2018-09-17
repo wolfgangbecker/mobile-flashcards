@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
 
 import { addDeckActionCreator } from "../actions/decks";
@@ -19,7 +19,7 @@ export class NewDeck extends React.Component {
     }
 
     const { addDeck, navigation } = this.props;
-    const { deck: { id, title } } = addDeck(this.state);
+    const { deck: { id } } = addDeck(this.state);
     this.setState({ title: '' });
     navigation.navigate("DeckDetail", { id, title });
   }
@@ -28,7 +28,10 @@ export class NewDeck extends React.Component {
     const { title } = this.state;
 
     return (
-      <View style={formStyles.container}>
+      <KeyboardAvoidingView
+        style={formStyles.container}
+        behavior="padding"
+        enabled>
         <TextInput
           style={formStyles.input}
           placeholder="Type your title here..."
@@ -40,7 +43,7 @@ export class NewDeck extends React.Component {
           onPress={this.submit}>
           <Text style={{ color: white }}>Create Deck</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

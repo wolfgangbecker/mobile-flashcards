@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import { KeyboardAvoidingView, TextInput, Text, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
 
 import { addCardActionCreator } from "../actions/cards";
@@ -26,7 +26,10 @@ export class AddCard extends React.Component {
 
   render() {
     return (
-      <View style={formStyles.container}>
+      <KeyboardAvoidingView
+        style={formStyles.container}
+        behavior="padding"
+        enabled>
         <TextInput
           style={formStyles.input}
           placeholder="Type your question here..."
@@ -40,7 +43,7 @@ export class AddCard extends React.Component {
         <TouchableOpacity style={formStyles.submitButton} onPress={this.submit}>
           <Text style={{ color: white }}>Add Card</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
