@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
-import { white, lightGrey2, lightGrey3, grey, darkGrey, black } from "../styles/colors";
+import { white, lightGrey2, lightGrey3, grey, darkGrey, black, lightGrey } from "../styles/colors";
 
 export class DeckDetail extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -9,6 +9,10 @@ export class DeckDetail extends React.Component {
       title: navigation.state.params.title
     };
   };
+
+  noCards = () => {
+    return this.props.deck.cardIds.length === 0;
+  }
 
   render() {
     const { deck } = this.props;
@@ -26,7 +30,8 @@ export class DeckDetail extends React.Component {
             <Text>Add Card</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: black }]}
+            disabled={this.noCards()}
+            style={[styles.button, { backgroundColor: this.noCards() ? lightGrey : black }]}
             onPress={() => this.props.navigation.navigate("Quiz", { deckId: deck.id })}>
             <Text style={{ color: white }}>Start Quiz</Text>
           </TouchableOpacity>
