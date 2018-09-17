@@ -10,6 +10,8 @@ The main technologies/libraries used are [React Native](https://facebook.github.
 
 All the data gets stored in the local storage (AsyncStorage).
 
+The app has been tested successfully on Android 5.0 and 7.0 devices.
+
 ## Setup
 1. Clone the project.
 2. Install [Node](https://nodejs.org/en/).
